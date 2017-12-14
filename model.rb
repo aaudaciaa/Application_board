@@ -17,6 +17,7 @@ class User
   property :password, String
   property :name, String, :default => ""
   property :story, Text, :default => ""
+  property :is_admin, Boolean, :default => "false"
   property :created_at, DateTime
 end
 

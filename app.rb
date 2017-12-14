@@ -8,10 +8,6 @@ set :bind, '0.0.0.0'
 
 enable :sessions
 
-before do
-  check_login
-end
-
 get '/' do
   @posts = Post.all.reverse
   erb :index
@@ -106,6 +102,11 @@ end
 get '/logout' do
   session.clear
   redirect to '/'
+end
+
+get '/admin' do
+  @users = User.all
+  erb :admin
 end
 
 def check_login
