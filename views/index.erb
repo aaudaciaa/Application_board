@@ -1,0 +1,16 @@
+<h1>게시글 목록</h1>
+
+<% @posts.each do |w| %>
+  <div class="card">
+    <div class="card-body">
+      <p>제목 : <%= w.title %> / 내용 : <%= w.content %> / 작성자 : <%= w.author %>
+      <a href="/destroy/<%= w.id %> ">[삭제]</a>
+      <a href="/edit/<%= w.id %>">[수정]</a>
+      <p>
+    </div>
+  </div>
+<% end %>
+
+<form action="/new">
+  <input type="submit" value="글쓰기">
+</form>
