@@ -74,8 +74,10 @@ end
 
 get '/register' do
   User.create(
+    name: params["name"],
     email: params["email"],
-    password: params["password"]
+    password: params["password"],
+    story: params["story"]
   )
 
   redirect to '/'
@@ -109,8 +111,13 @@ get '/admin' do
   erb :admin
 end
 
-def check_login
-  unless session[:email]
-    redirect to '/'
-  end
+get '/myPage' do
+  @userinfo = User.all(email: session[:email])
+  erb :myPage
 end
+
+# def check_login
+#   unless session[:email]
+#     redirect to '/'
+#   end
+# end
